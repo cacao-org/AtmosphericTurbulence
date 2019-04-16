@@ -5,11 +5,11 @@
 NBARGS=1
 
 # link to executable - change as needed
-execname="AtmosphericTurbulenceSimul"
+execname="cacao"
 
 
 ## OPTIONAL : refractive index / absorption coefficients files (RIA files)
-RIAfile_dir="/data/WORK/2014-AtmTurb/RefractiveIndices"
+RIAfile_dir="/data1/WORK/2014-AtmTurb/RefractiveIndices"
 RIAfile_N2="${RIAfile_dir}/R300000/RIA_N2.dat"
 RIAfile_O2="${RIAfile_dir}/R300000/RIA_O2.dat"
 RIAfile_Ar="${RIAfile_dir}/R30000/RIA_Ar.dat"
@@ -266,17 +266,17 @@ CO2_PPM="400.0"                           # ground level CO2 concentration [ppm]
 
 # --------------- temperature and pressure ---------------------------
 # if SITE_TP_AUTO = 1, adopt default temperature and pressure computed from site location and time
-SITE_TP_AUTO=1
+SITE_TP_AUTO=0
 # otherwise, force following values
-SITE_TEMP="273.15"                       # [K]
-SITE_PRESS="0.6"                         # [atm] = [101325 Pa]
+SITE_TEMP="276.15"                       # [K]
+SITE_PRESS="0.607"                       # [atm] = [101325 Pa]
 
 
 # ------------ Water vapor -------------------------------------
 # There are 3 ways to specify the water vapor content vertical distribution
 
 # Method 1: specify total precipitable water and precipitable water scale height
-# the relative humitidy vertical distribution will be computed and given in file atm.txt 
+# the relative humidity vertical distribution will be computed and given in file atm.txt 
 
 # Method 2: specify relative humidity at site altitude and precipitable water scale height
 # the total precipitable water will be computed 
@@ -284,8 +284,8 @@ SITE_PRESS="0.6"                         # [atm] = [101325 Pa]
 # Method 3: specify relatice humidity and total precipitable water
 # the precipitable water scale height will be adjusted automaticallyq
 
-SITE_H2O_METHOD=1                       # Method chosen to input water vapor content
-SITE_RH="30.0"                          # site relative humidity [%]
+SITE_H2O_METHOD=2                       # Method chosen to input water vapor content
+SITE_RH="10.0"                          # site relative humidity [%]
 SITE_TPW="0.01"                          # Site total precitipable water [mm] (only takes into account PW above SITE_ALT)
 SITE_PW_SCALEH="2000.0"                 # water vapor relative concentration scale height [m]
 

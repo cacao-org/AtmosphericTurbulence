@@ -27,7 +27,7 @@ int clock_gettime(int clk_id, struct timespec *t){
 
 
 #include "CommandLineInterface/CLIcore.h"
-#include "CLIcore.h"
+
 #include "COREMOD_memory/COREMOD_memory.h"
 #include "COREMOD_arith/COREMOD_arith.h"
 
@@ -336,7 +336,7 @@ void __attribute__ ((constructor)) libinit_AtmosphericTurbulence()
 	if( INITSTATUS_AtmosphericTurbulence == 0)
 	{
 		init_AtmosphericTurbulence();
-		RegisterModule(__FILE__, "", "Atmospheric Turbulence");
+		RegisterModule(__FILE__, "cacao-opt", "Atmospheric Turbulence");
 		INITSTATUS_AtmosphericTurbulence = 1;
 	}
 }
@@ -1823,9 +1823,14 @@ int make_AtmosphericTurbulence_wavefront_series(float slambdaum, long WFprecisio
 
     fp = fopen("Rlambda.txt", "w");
     for(l=1e-6; l<5e-6; l*=1.0+1e-5)
-        fprintf(fp, "%.16f %.16f %.16f %.16f\n", l, AtmosphereModel_stdAtmModel_N(10, l, 0), AtmosphereModel_stdAtmModel_N(1000, l, 0), AtmosphereModel_stdAtmModel_N(4200, l, 0));
+    {
+		fprintf(fp, "%.18f %.6f\n", l*1.0e6, AtmosphereModel_stdAtmModel_N(4200, l, 0)*1.0e6);
+		
+        //fprintf(fp, "%.18f %.18f %.18f %.18f\n", l, AtmosphereModel_stdAtmModel_N(10, l, 0), AtmosphereModel_stdAtmModel_N(1000, l, 0), AtmosphereModel_stdAtmModel_N(4200, l, 0));
+	}
     fclose(fp);
 
+	exit(0);
 
 
     fp = fopen("AtmRefrac.txt", "w");

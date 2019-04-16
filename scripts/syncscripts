@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # copy Atmospheric turbulence simulation scripts to local directory
-execname=AtmosphericTurbulenceSimul
+execname=cacao
 
 srcdir=$( $execname -i| grep SOURCEDIR| awk '{ print $NF }')
 
@@ -15,6 +15,6 @@ echo "Source directory  : $srcdir"
 for sname in runturb mkHVturbprof
 do
 rm $sname 2> /dev/null
-ln -s $srcdir/AtmosphericTurbulence/scripts/$sname $currdir/$sname
+ln -s $srcdir/src/AtmosphericTurbulence/scripts/$sname $currdir/$sname
 done
 
