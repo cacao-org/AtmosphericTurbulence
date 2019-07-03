@@ -806,7 +806,7 @@ int make_master_turbulence_screen(char *ID_name1, char *ID_name2, long size, flo
 
     value = 0.0;
     cnt = 0;
-    if(data.image[ID].md[0].atype == _DATATYPE_FLOAT)
+    if(data.image[ID].md[0].datatype == _DATATYPE_FLOAT)
     {
         for(ii = 1; ii<Dlim; ii++)
             for(jj = 1; jj<Dlim; jj++)
@@ -835,7 +835,7 @@ int make_master_turbulence_screen(char *ID_name1, char *ID_name2, long size, flo
     ID = image_ID("strf");
     value = 0.0;
     cnt = 0;
-    if(data.image[ID].md[0].atype == _DATATYPE_FLOAT)
+    if(data.image[ID].md[0].datatype == _DATATYPE_FLOAT)
     {
         for(ii=1; ii<Dlim; ii++)
             for(jj=1; jj<Dlim; jj++)
@@ -1830,7 +1830,6 @@ int make_AtmosphericTurbulence_wavefront_series(float slambdaum, long WFprecisio
 	}
     fclose(fp);
 
-	exit(0);
 
 
     fp = fopen("AtmRefrac.txt", "w");
